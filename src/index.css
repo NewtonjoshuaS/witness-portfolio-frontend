@@ -1,0 +1,97 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --accent: #10b981;
+  --accent2: #34d399;
+  --accent3: #06b6d4;
+  --bg: #030b14;
+  --surface: rgba(6, 20, 36, 0.85);
+  --border: rgba(16, 185, 129, 0.15);
+  --text: #e2f0ea;
+  --muted: #5a8a72;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Dot grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(16,185,129,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+::selection { background: rgba(16,185,129,0.25); color: #fff; }
+
+.glass {
+  background: rgba(6, 24, 40, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #10b981, #34d399, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(16,185,129,0.4); }
+
+.btn-outline {
+  border: 1px solid rgba(16,185,129,0.35);
+  color: var(--accent2);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover { background: rgba(16,185,129,0.1); border-color: var(--accent); }
+
+.skill-card {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+}
+.skill-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(16,185,129,0.12); }
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor { animation: blink 1s step-end infinite; color: var(--accent); }
+
+.field-input {
+  background: rgba(16,185,129,0.04);
+  border: 1px solid rgba(16,185,129,0.18);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+.field-input:focus { border-color: var(--accent); background: rgba(16,185,129,0.08); box-shadow: 0 0 0 3px rgba(16,185,129,0.1); outline: none; }
+.field-input::placeholder { color: #2a5a42; }
